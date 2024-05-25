@@ -3,7 +3,7 @@ import time
 from tinytag import TinyTag
 from pydub import AudioSegment
 
-def list_files(path, ending, export_path):
+def list_files(path, ending, export_path, recursive):
     export_path = os.path.normpath(export_path)
     path = os.path.normpath(path)
     if not os.path.exists(export_path):
@@ -33,6 +33,9 @@ def list_files(path, ending, export_path):
                 audio_file.export(export_filename, format="mp3", tags=metadata)
                 files_processed += 1
 
+            elif x.is_dir() and recursive == True:
+                list_files(x.path, ending, export_path, recursive)
+
     except FileNotFoundError:
         pass
     except PermissionError:
@@ -49,11 +52,12 @@ def list_files(path, ending, export_path):
 
 def main():
     origin = input("Which directory do you want to export from?\n")
+    recursive = input("Do you want it to recursively go through all subdirectories in your directory? (y/n)\n").lower().strip() == 'y'
     ending = input("Which datatype should be exported to mp3?\n").strip()
     export = input("To which directory should the files be exported to?\n")
     print("Files are being converted...")
     tic = time.perf_counter()
-    list_files(origin, (".", ending), export)
+    list_files(origin, (".", ending), export, recursive)
     toc = time.perf_counter()
     print(f"It took {toc - tic:0.4f} seconds")
 
