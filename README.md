@@ -1,1 +1,1 @@
-Run the python file, then cum inside it
+Run the python file and answer to the commandline
