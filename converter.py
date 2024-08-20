@@ -51,12 +51,12 @@ def list_files(path, ending, export_path, recursive):
 
 
 def main():
+    
     origin = input("Which directory do you want to export from? (e.g. C:\music\mp3)\n")
     recursive = input("Do you want it to recursively go through all subdirectories in your directory? (y/n)\n").lower().strip() == 'y'
     ending = input("Which datatype should be exported to mp3? (e.g. flac, wav)\n").strip()
     export = input("To which directory should the files be exported to?\n")
 
-    
     print("Files are being converted...")
     tic = time.perf_counter()
     list_files(origin, (".", ending), export, recursive)
