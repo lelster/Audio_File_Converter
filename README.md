@@ -17,7 +17,18 @@ Before running the script, ensure you have the following installed:
 - `tinytag` library
 - `ffmpeg` (required by `pydub` for audio processing)
 
-Make sure to add the bin directory of ffmpeg to your system's PATH if you are on windows.
+#### Windows
+Install ffmpeg and make sure to add the bin directory of ffmpeg to your system's PATH.
+
+#### macOS
+```bash
+brew install ffmpeg
+```
+#### Linux
+```bash
+sudo apt-get install ffmpeg
+```
+
 
 ### Installing Python Dependencies
 
@@ -27,7 +38,7 @@ To install the required Python libraries, you can use `pip`:
 pip install pydub tinytag
 ```
 
-### Running the file
+## Running the file
 ```bash
 python converter.py
 ```
